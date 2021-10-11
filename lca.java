@@ -1,7 +1,8 @@
 import java.util.ArrayList;
 import java.util.List;
 
-// A Binary Tree node
+// lca is a binary Tree
+// create binary tree node
 class Node {
     int data;
     Node left, right;
@@ -12,21 +13,21 @@ class Node {
     }
 }
 
-public class BT_NoParentPtr_Solution1
+public class BT_Solution
 {
 
     Node root;
     private List<Integer> path1 = new ArrayList<>();
     private List<Integer> path2 = new ArrayList<>();
 
-    // Finds the path from root node to given root of the tree.
+// finds  path
     int findLCA(int n1, int n2) {
         path1.clear();
         path2.clear();
-        return findLCAInternal(root, n1, n2);
+        return findLCA(root, n1, n2);
     }
 
-    private int findLCAInternal(Node root, int n1, int n2) {
+    private int findLCA(Node root, int n1, int n2) {
 
         if (!findPath(root, n1, path1) || !findPath(root, n2, path2)) {
             System.out.println((path1.size() > 0) ? "n1 is present" : "n1 is missing");
@@ -37,7 +38,7 @@ public class BT_NoParentPtr_Solution1
         int i;
         for (i = 0; i < path1.size() && i < path2.size(); i++) {
 
-        // System.out.println(path1.get(i) + " " + path2.get(i));
+
             if (!path1.get(i).equals(path2.get(i)))
                 break;
         }
@@ -45,17 +46,14 @@ public class BT_NoParentPtr_Solution1
         return path1.get(i-1);
     }
 
-    // Finds the path from root node to given root of the tree, Stores the
-    // path in a vector path[], returns true if path exists otherwise false
+//finds paths from root node to given root of the tree
     private boolean findPath(Node root, int n, List<Integer> path)
     {
-        // base case
+
         if (root == null) {
             return false;
         }
 
-        // Store this node . The node will be removed if
-        // not in path from root to n.
         path.add(root.data);
 
         if (root.data == n) {
@@ -70,17 +68,15 @@ public class BT_NoParentPtr_Solution1
             return true;
         }
 
-        // If not present in subtree rooted with root, remove root from
-        // path[] and return false
+
         path.remove(path.size()-1);
 
         return false;
     }
 
-    // Driver code
     public static void main(String[] args)
     {
-        BT_NoParentPtr_Solution1 tree = new BT_NoParentPtr_Solution1();
+        BT_Solution tree = new BT_Solution();
         tree.root = new Node(1);
         tree.root.left = new Node(2);
         tree.root.right = new Node(3);
@@ -88,7 +84,6 @@ public class BT_NoParentPtr_Solution1
         tree.root.left.right = new Node(5);
         tree.root.right.left = new Node(6);
         tree.root.right.right = new Node(7);
-
         System.out.println("LCA(4, 5): " + tree.findLCA(4,5));
         System.out.println("LCA(4, 6): " + tree.findLCA(4,6));
         System.out.println("LCA(3, 4): " + tree.findLCA(3,4));
