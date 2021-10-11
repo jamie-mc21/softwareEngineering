@@ -1,8 +1,10 @@
+//a binary tree node
 class TreeNode:
    def __init__(self, data, left = None, right = None):
       self.data = data
       self.left = left
       self.right = right
+
 def insert(temp,data):
    que = []
    que.append(temp)
@@ -25,11 +27,13 @@ def insert(temp,data):
             break
          else:
             que.append(temp.right)
+
 def make_tree(elements):
    Tree = TreeNode(elements[0])
    for element in elements[1:]:
       insert(Tree, element)
    return Tree
+
 class Solution(object):
    def lowestCommonAncestor(self, root, p, q):
       if not root:
