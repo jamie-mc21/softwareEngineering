@@ -13,6 +13,16 @@ class Node {
     }
 }
 
+public boolean exists(Key key) {
+  if(getNode(key) != null) {
+    return true;
+  }
+  else {
+    return false;
+  }
+}
+
+
 public class BT_Solution
 {
 
