@@ -52,6 +52,8 @@ public void addEdge()
 {
 	DirectedAcyclicGraph DirectedAcyclicGraph = new DirectedAcyclicGraph(10);
 	DirectedAcyclicGraph.addEdge(1,3);
+	DirectedAcyclicGraph.addEdge(2,5);
+	DirectedAcyclicGraph.addEdge(3,6);
 }
 
 @Test(expected=Exception.class)
