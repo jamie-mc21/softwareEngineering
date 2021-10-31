@@ -35,9 +35,24 @@ public class LCATest {
 	}
 
 	@Test
+public void testEmpty() {
+	LCA tree = new LCA();
+	assertEquals("error, LCA of empty tree: ", null, tree.findLCA(1, 2));
+}
+
+@Test
+public void addEdge()
+{
+ 	dag DirectedAcyclicGraph = new dag(10);
+	DirectedAcyclicGraph.addEdge(1,3);
+	DirectedAcyclicGraph.addEdge(2,5);
+	DirectedAcyclicGraph.addEdge(3,6);
+}
+
+	@Test
 	public void testDirectedAcyclicGraph()
 	{
-		DirectedAcyclicGraph DirectedAcyclicGraph = new DirectedAcyclicGraph(10);
+		dag DirectedAcyclicGraph = new dag(10);
 		DirectedAcyclicGraph.addEdge(1, 3);
 		DirectedAcyclicGraph.addEdge(4, 5);
 		DirectedAcyclicGraph.addEdge(4, 6);
@@ -47,17 +62,8 @@ public class LCATest {
 	}
 
 
-@Test
-public void addEdge()
-{
-	DirectedAcyclicGraph DirectedAcyclicGraph = new DirectedAcyclicGraph(10);
-	DirectedAcyclicGraph.addEdge(1,3);
-	DirectedAcyclicGraph.addEdge(2,5);
-	DirectedAcyclicGraph.addEdge(3,6);
-}
-
 @Test(expected=Exception.class)
 public void testFalse()
 {
-			DirectedAcyclicGraph DirectedAcyclicGraph = new DirectedAcyclicGraph(-10);
+			dag DirectedAcyclicGraph = new dag(-10);
 }
