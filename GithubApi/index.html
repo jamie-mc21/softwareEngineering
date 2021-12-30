@@ -56,7 +56,7 @@ async function chartIt() {
 await getData("jamie-mc21");
 const ctx = document.getElementById('Chart').getContext('2d');
 const myChart = new Chart(ctx, {
-    type: 'pie',
+    type: 'bar',
     data: {
         labels: ['Followers', 'Following'],
         datasets: [
